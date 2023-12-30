@@ -1,13 +1,15 @@
 let weekdays = ["MAANDAG", "DINSDAG", "WOENSDAG", "DONDERDAG", "VRIJDAG", "ZATERDAG", "ZONDAG"];
+let exams = ["Warmte en Stroming", "Ingenieur en duur", "Wisselstroomnetten", "Wiskunde", "Data engeneering", "Besturingssystemen"];
+let exam_days = [13, 15, 20, 24, 27, 31];
+
 let days = [];
 let numbers = [];
 let current_i;
-let exams = ["Warmte en Stroming", "Ingenieur en duur", "Wisselstroomnetten", "Wiskunde", "Data engeneering", "Besturingssystemen"];
-let exam_days = [13, 15, 20, 24, 27, 31];
+
 let w;
 let h;
 let r;
-let u = 50;
+let u;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -65,14 +67,11 @@ function draw() {
     
     x = ((i%7)+0.75)*w;
     y = 0.3*h;
-    
     noStroke();
     fill(255, 127, 0);
     textSize(w/8);
     text(weekdays[i], x, y);
-    
   }
-  
   
   for(let i = 0; i < 38; i++){
     days[i].show();
@@ -104,6 +103,15 @@ class Day{
     strokeWeight(5);
     rect(this.x, this.y, w, h, r);
     
+    if(this.i == current_i){
+      this.dx = map(hour() + minute()/60, 0, 24, 0, w);
+      stroke(127);
+      line(this.x + this.dx, this.y, this.x + this.dx, this.y + h);
+    }
+    
+    stroke(255);
+    noFill();
+    rect(this.x, this.y, w, h, r);
     
     noStroke();
     fill(255, 0, 0);
