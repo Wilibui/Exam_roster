@@ -16,7 +16,7 @@ function setup() {
   textAlign(CENTER);
   
   w = width/10;
-  h = height/7;
+  h = height/7.5;
   u = width/40; 
   r = 0;
   
@@ -50,6 +50,18 @@ function setup() {
 function draw() {
   translate(0, 0.3*h);
   background(127, 0, 0);
+  
+  
+  stroke(255);
+  strokeWeight(5);
+  
+  let max_w = w*9;
+  rect(((0%7)+0.25)*w, height-h*0.7, w*9, h/3);
+  let wi = map(hour()+minute()/60, 0, 24, 0, w*9);
+  noStroke();
+  fill(0);
+  rect(((0%7)+0.25)*w, height-h*0.7, wi, h/3);
+  
   
   if(month() == 12){ 
     current_i = day() - 25;
