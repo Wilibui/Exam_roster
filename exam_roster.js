@@ -15,6 +15,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   textAlign(CENTER);
   
+  
   w = width/10;
   h = height/7.5;
   u = width/40; 
