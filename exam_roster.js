@@ -35,7 +35,7 @@ function setup() {
   for(let i = 7; i < 38; i++){
     for(let j = 0; j < 6; j++){
       if(days[i].day == exam_days[j]){
-        days[i].exam = exams[j]
+        days[i].exam = exams[j];
       }
     }
   }
@@ -74,7 +74,12 @@ function draw() {
   }
   
   for(let i = 0; i < 38; i++){
-    days[i].show();
+    days[i].show(); 
+  }
+  
+  for(let i = 0; i < 38; i++){
+    days[i].showLine();
+    days[i].showText();
   }
   
   digital();
@@ -90,8 +95,18 @@ class Day{
     this.i = i;
     this.exam = "";
   }
+  
+  showLine(){
+    stroke(127);
+    if(this.i == current_i){
+      this.dx = map(hour() + minute()/60, 0, 24, 0, w);
+      line(this.x + this.dx, this.y, this.x + this.dx, this.y + h);
+    }
+  }
    
-  show(){   
+  show(){ 
+    stroke(255);
+    strokeWeight(5);
     if(this.i < current_i){
       fill(0, 127, 0);
     }else if(this.i == current_i){
@@ -99,20 +114,10 @@ class Day{
     }else{
       fill(0);
     }
-    stroke(255);
-    strokeWeight(5);
-    rect(this.x, this.y, w, h, r);
-    
-    if(this.i == current_i){
-      this.dx = map(hour() + minute()/60, 0, 24, 0, w);
-      stroke(127);
-      line(this.x + this.dx, this.y, this.x + this.dx, this.y + h);
-    }
-    
-    stroke(255);
-    noFill();
-    rect(this.x, this.y, w, h, r);
-    
+    rect(this.x, this.y, w, h, r);  
+  }
+  
+  showText(){
     noStroke();
     fill(255, 0, 0);
     textSize(w/10);
@@ -140,7 +145,6 @@ function digital(){
     numbers[2].update(floor(minute()/10));
   }
   numbers[3].update(minute() - floor(minute()/10)*10);   
-  
   
   //show numbers
   for(let number of numbers){
@@ -177,48 +181,49 @@ class Numbers{
       
     //1
     this.list = [0, 2, 3, 5, 6, 7, 8, 9];
-    check(this.n, this.list);
+    this.check(this.n, this.list);
     line(this.x - (0.6*this.u), this.y - (2*this.u), this.x + (0.6*this.u), this.y - (2*this.u));
     
     //2
     this.list = [0, 4, 5, 6, 8, 9];
-    check(this.n, this.list);
+    this.check(this.n, this.list);
     line(this.x - (0.8*this.u), this.y - (1.6*this.u), this.x - (0.8*this.u), this.y - (0.4*this.u));
     
     //3
     this.list = [0, 1, 2, 3, 4, 7, 8, 9];
-    check(this.n, this.list);
+    this.check(this.n, this.list);
     line(this.x + (0.8*this.u), this.y - (1.6*this.u), this.x + (0.8*this.u), this.y - (0.4*this.u));
     
     //4
     this.list = [2, 3, 4, 5, 6, 8, 9];
-    check(this.n, this.list);
+    this.check(this.n, this.list);
     line(this.x - (0.6*this.u), this.y, this.x + (0.6*this.u), this.y);
     
     //5
     this.list = [0, 2, 6, 8];
-    check(this.n, this.list);
+    this.check(this.n, this.list);
     line(this.x - (0.8*this.u), this.y + (0.4*this.u), this.x - (0.8*this.u), this.y + (1.6*this.u));
     
     //6
     this.list = [0, 1, 3, 4, 5, 6, 7, 8, 9];
-    check(this.n, this.list);
+    this.check(this.n, this.list);
     line(this.x + (0.8*this.u), this.y + (0.4*this.u), this.x + (0.8*this.u), this.y + (1.6*this.u));
     
     //7
     this.list = [0, 2, 3, 5, 6, 8, 9];
-    check(this.n, this.list);
+    this.check(this.n, this.list);
     line(this.x - (0.6*this.u), this.y + (2*this.u), this.x + (0.6*this.u), this.y + (2*this.u));
   }
+  
   update(n){
     this.n = n;
   }
-}
-
-function check(n, list){
-  if(list.includes(n)){
-    stroke(255);  
-  }else{
-    noStroke(); 
-  }  
+  
+  check(n, list){
+    if(list.includes(n)){
+      stroke(255);  
+    }else{
+      noStroke(); 
+    }  
+  }
 }
