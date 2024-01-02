@@ -54,7 +54,7 @@ function draw() {
   if(month() == 12){ 
     current_i = day() - 25;
   }else{
-    current_i = day() + 7;
+    current_i = day() + 6;
   }
   
   for(let i = 0; i < 7; i++){
