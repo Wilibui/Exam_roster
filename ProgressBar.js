@@ -7,7 +7,6 @@ let bar_h;
 function progressBar(){
   bar_x = 0.25*w;
   bar_y = 0.25*h;
-  
   max_w = w*7;
   bar_w = map(hour()+minute()/60, 0, 24, 0, max_w);
   bar_h = 0.4*h;
