@@ -12,6 +12,7 @@ function setupDays(){
     days[i+7] = new Day(1, 1+i, weekdays[0], x, y, i+7);
   }
     
+    
   days[6 + 13].exam = "Warmte en Stroming";
   days[6 + 15].exam = "Ingenieur en duur";
   days[6 + 20].exam = "Wisselstroomnetten";
