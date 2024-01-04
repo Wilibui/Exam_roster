@@ -1,6 +1,6 @@
 let weekdays = ["MAANDAG", "DINSDAG", "WOENSDAG", "DONDERDAG", "VRIJDAG", "ZATERDAG", "ZONDAG"];
 let exams = ["Warmte en Stroming", "Ingenieur en duur", "Wisselstroomnetten", "Wiskunde", "Data engeneering", "Besturingssystemen"];
-let exam_days = [13, 15, 20, 24, 27, 31];
+let plan = ["WIS", "I&D", "WSN", "W&S", "DE", "BS"];
 
 
 let days = [];

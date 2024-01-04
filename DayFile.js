@@ -12,43 +12,46 @@ function setupDays(){
     days[i+7] = new Day(1, 1+i, weekdays[0], x, y, i+7);
   }
     
-    
-  days[6 + 13].exam = "Warmte en Stroming";
-  days[6 + 15].exam = "Ingenieur en duur";
-  days[6 + 20].exam = "Wisselstroomnetten";
-  days[6 + 24].exam = "Wiskunde";
-  days[6 + 27].exam = "Data engeneering";
-  days[6 + 31].exam = "Besturingssystemen";
+  days[6 + 13].exam = exams[0];
+  days[6 + 15].exam = exams[1];
+  days[6 + 20].exam = exams[2];
+  days[6 + 24].exam = exams[3];
+  days[6 + 27].exam = exams[4];
+  days[6 + 31].exam = exams[5];
   
   days[0].rest = "KERST";
   days[6].rest = "NEW Y";
   days[7].rest = "NEW Y";
   
-  days[1].plan = "WIS";
-  days[2].plan = "WIS";
+  let plan = ["WIS", "I&D", "WSN", "W&S", "DE", "BS"];
+  
+  days[1].plan = plan[0];
+  days[2].plan = plan[0];
   for(let i = 3; i <= 5; i++){
-    days[i].plan = "WSN";
+    days[i].plan = plan[2];
   }
-  days[6 + 2].plan = "WIS";
-  days[6 + 3].plan = "I&D";
-  for(let i = 4; i <= 7; i++){
-    days[6 + i].plan = "B/D";
-  }
+  days[6 + 2].plan = plan[0];
+  days[6 + 3].plan = plan[1];
+  days[6 + 4].plan = plan[5];
+  days[6 + 5].plan = plan[5];
+  days[6 + 6].plan = plan[4];
+  days[6 + 7].plan = plan[4];
+
   for(let i = 8; i <= 12; i++){
-    days[6 + i].plan = "W&S";
+    days[6 + i].plan = plan[2];
   }
-  days[6 + 14].plan = "I&D";
-  days[6 + 16].plan = "WIS";
+  days[6 + 14].plan = plan[1];
+  days[6 + 16].plan = plan[0];
   for(let i = 17; i <= 19; i++){
-    days[6 + i].plan = "WSN";
+    days[6 + i].plan = plan[2];
   }
   for(let i = 21; i <= 23; i++){
-    days[6 + i].plan = "WIS";
+    days[6 + i].plan = plan[0];
   }
-  days[6 + 25].plan = "DAT";
-  days[6 + 26].plan = "DAT";
+  days[6 + 25].plan = plan[4];
+  days[6 + 26].plan = plan[4];
   for(let i = 28; i <= 30; i++){
-    days[6 + i].plan = "BES";
+    days[6 + i].plan = plan[5];
   }
   
   
@@ -146,7 +149,13 @@ class Day{
     text(this.exam, this.x + w/2, this.y + 0.8*h);
     
     if(c){
-      fill(0, 255, 255);
+      for(let i = 0; i <= plan.length; i++){
+        if(plan[i] == this.plan){
+          let g = map(i, 0, 5, 255, 0);
+          let b = map(i, 0, 5, 0, 255);
+          fill(0, g, b);
+        }
+      }  
     }else{
       fill(127);
       if(this.i == current_i){
