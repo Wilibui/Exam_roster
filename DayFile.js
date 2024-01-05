@@ -22,8 +22,8 @@ function setupDays(){
   days[6 + 2].plan = plan[3];
   days[6 + 3].plan = plan[1];
   days[6 + 4].plan = plan[5];
-  days[6 + 5].plan = plan[5];
-  days[6 + 6].plan = plan[4];
+  days[6 + 5].plan = plan[4];
+  days[6 + 6].plan = plan[5];
   days[6 + 7].plan = plan[4];
   for(let i = 8; i <= 12; i++){
     days[6 + i].plan = plan[0];
