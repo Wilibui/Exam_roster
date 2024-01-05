@@ -8,25 +8,17 @@ function setupTime(){
 function time(){
   translate(0, height/2);
   //hours
-  if(hour() < 10){
-    numbers[0].update(10);
-  }else{
-    numbers[0].update(floor(hour()/10));
-  }
+  if(hour() < 10){numbers[0].update(10);}
+  else{numbers[0].update(floor(hour()/10));}
   numbers[1].update(hour() - floor(hour()/10)*10);  
   
   //minutes
-  if(minute() < 10){
-    numbers[2].update(0);
-  }else{
-    numbers[2].update(floor(minute()/10));
-  }
+  if(minute() < 10){numbers[2].update(0);}
+  else{numbers[2].update(floor(minute()/10));}
   numbers[3].update(minute() - floor(minute()/10)*10);   
   
   //show numbers
-  for(let number of numbers){
-    number.show();
-  }
+  for(let number of numbers){number.show();}
   
   //dots
   strokeWeight(u/3);
@@ -96,10 +88,7 @@ class Numbers{
   }
   
   check(n, list){
-    if(list.includes(n)){
-      stroke(255);  
-    }else{
-      noStroke(); 
-    }  
+    if(list.includes(n)){stroke(255);}
+    else{noStroke();}  
   }
 }

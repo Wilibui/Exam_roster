@@ -1,5 +1,4 @@
 function setupDays(){
-    
   for(let i = 0; i < 7; i++){
     x = ((i%7)+0.25)*w;
     y = 1.25*h;
@@ -11,57 +10,50 @@ function setupDays(){
     y = (floor(i/7)+2.25)*h;
     days[i+7] = new Day(1, 1+i, weekdays[0], x, y, i+7);
   }
-    
-  days[6 + 13].exam = exams[0];
-  days[6 + 15].exam = exams[1];
-  days[6 + 20].exam = exams[2];
-  days[6 + 24].exam = exams[3];
-  days[6 + 27].exam = exams[4];
-  days[6 + 31].exam = exams[5];
   
-  days[0].rest = "KERST";
-  days[6].rest = "NEW Y";
-  days[7].rest = "NEW Y";
-  
-  let plan = ["WIS", "I&D", "WSN", "W&S", "DE", "BS"];
-  
-  days[1].plan = plan[0];
-  days[2].plan = plan[0];
+  days[0].rest = "KERST";  
+  days[1].plan = plan[3];
+  days[2].plan = plan[3];
   for(let i = 3; i <= 5; i++){
     days[i].plan = plan[2];
   }
-  days[6 + 2].plan = plan[0];
+  days[6].rest = "NEW Y";
+  days[7].rest = "NEW Y";
+  days[6 + 2].plan = plan[3];
   days[6 + 3].plan = plan[1];
   days[6 + 4].plan = plan[5];
   days[6 + 5].plan = plan[5];
   days[6 + 6].plan = plan[4];
   days[6 + 7].plan = plan[4];
-
   for(let i = 8; i <= 12; i++){
-    days[6 + i].plan = plan[2];
+    days[6 + i].plan = plan[0];
   }
+  days[6 + 13].exam = exams[0];
   days[6 + 14].plan = plan[1];
-  days[6 + 16].plan = plan[0];
+  days[6 + 15].exam = exams[1];
+  days[6 + 16].plan = plan[3];
   for(let i = 17; i <= 19; i++){
     days[6 + i].plan = plan[2];
   }
+  days[6 + 20].exam = exams[2];
   for(let i = 21; i <= 23; i++){
-    days[6 + i].plan = plan[0];
+    days[6 + i].plan = plan[3];
   }
+  days[6 + 24].exam = exams[3];
   days[6 + 25].plan = plan[4];
   days[6 + 26].plan = plan[4];
+  days[6 + 27].exam = exams[4];
   for(let i = 28; i <= 30; i++){
     days[6 + i].plan = plan[5];
   }
-  
-  
-  
+  days[6 + 31].exam = exams[5];
 }
 
 function showWeekDays(){
   for(let i = 0; i < 7; i++){
     x = ((i%7)+0.25)*w;
     y = 0.75*h;
+    
     fill(0);
     stroke(255);
     strokeWeight(w/50);
@@ -70,11 +62,8 @@ function showWeekDays(){
     x = ((i%7)+0.75)*w;
     y = h;
     
-    if(c){
-      fill(255, 127, 0);
-    }else{
-      fill(255);
-    }
+    if(c){fill(255, 127, 0);}
+    else{fill(255);}
     noStroke();
     textSize(w/8);
     text(weekdays[i], x, y);
@@ -115,21 +104,13 @@ class Day{
    
   show(){ 
     if(c){
-      if(this.i < current_i){
-        fill(0, 127, 0);
-      }else if(this.i == current_i){
-        fill(0, 0, 127);
-      }else{
-        fill(0);
-      }
+      if(this.i < current_i){fill(0, 127, 0);}
+      else if(this.i == current_i){fill(0, 0, 127);}
+      else{fill(0);}
     }else{
-      if(this.i < current_i){
-        fill(75);
-      }else if(this.i == current_i){
-        fill(127);
-      }else{
-        fill(0);
-      }
+      if(this.i < current_i){fill(75);}
+      else if(this.i == current_i){fill(127);}
+      else{fill(0);}
     }
     
     stroke(255);
@@ -138,11 +119,8 @@ class Day{
   }
   
   showText(){   
-    if(c){
-      fill(255, 0, 0);
-    }else{
-      fill(255);
-    }
+    if(c){fill(255, 0, 0);}
+    else{fill(255);}
     
     noStroke();
     textSize(w/10);
@@ -155,26 +133,18 @@ class Day{
           let b = map(i, 0, 5, 0, 255);
           fill(0, g, b);
         }
-      }  
-    }else{
-      fill(127);
-      if(this.i == current_i){
-        fill(255);
       }
     }
+    else{fill(127);
+    if(this.i == current_i){fill(255);}}
     
     noStroke();
     textSize(w/7.5);
     text(this.plan, this.x + w/2, this.y + 0.8*h);
     
-    if(c){
-      fill(255, 255, 0);
-    }else{
-      fill(127);
-      if(this.i == current_i){
-        fill(255);
-      }
-    }
+    if(c){fill(255, 255, 0);}
+    else{fill(127);
+    if(this.i == current_i){fill(255);}}
     
     noStroke();
     textSize(w/7.5);
